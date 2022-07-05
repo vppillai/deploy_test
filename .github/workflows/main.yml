@@ -13,7 +13,7 @@ jobs:
         run: zip -r package.zip .
       - name: Deploy Lambda
         id: Deploy
-        uses: embeddedinn/deploy_lambda@v1.0.2
+        uses: embeddedinn/deploy_lambda@v1.0.3
         with:
             access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
             access-key-secret: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
