@@ -1,0 +1,22 @@
+on: [push]
+
+jobs:
+  lambda_deployment:
+    runs-on: ubuntu-latest
+    name: deploy code in repo into a lambda function
+    steps:
+      - name: Code checkout
+        id: checkout
+        uses: actions/checkout@master
+      - name: Package code into zip
+        id: Package
+        run: zip -r package.zip .
+      - name: Deploy Lambda
+        id: Deploy
+        uses: embeddedinn/deploy_lambda@v1
+        with:
+            access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            access-key-secret: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            region: ${{ secrets.AWS_REGION }}
+            lambda-name: ${{ secrets.LAMBDA_NAME }}
+            zip-file: package.zip
