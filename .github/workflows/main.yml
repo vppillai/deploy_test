@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@master
       - name: Package code into zip
         id: Package
-        run: zip -r package.zip .
+        run: zip -r package.zip lambda_function.py
       - name: Deploy Lambda
         id: Deploy
         uses: embeddedinn/deploy_lambda@v1.0.0
